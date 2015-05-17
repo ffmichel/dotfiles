@@ -1,0 +1,9 @@
+flake8==2.4.0
+gnureadline==6.3.3
+ipython==3.1.0
+mccabe==0.3
+pep8==1.5.7
+pip-autoremove==0.9.0
+powerline-status==2.1.4
+pyflakes==0.8.1
+vboxapi==1.0
