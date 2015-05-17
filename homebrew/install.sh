@@ -13,6 +13,8 @@ then
 fi
 
 # Install homebrew packages
-brew install grc coreutils spark
+brew install grc coreutils spark python wget
+
+brew link --overwrite python
 
 exit 0
