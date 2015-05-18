@@ -13,7 +13,7 @@ then
 fi
 
 # Install homebrew packages
-brew install grc coreutils spark python wget
+brew install grc coreutils spark python wget tmux ack
 
 brew link --overwrite python
 
