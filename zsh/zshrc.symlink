@@ -45,4 +45,4 @@ ZSH_THEME="random"
 plugins=(brew git ruby tmux mosh)
 source $ZSH/oh-my-zsh.sh
 
-
+source $DOTZSH/system/aliases.zsh
