@@ -14,15 +14,19 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 " Plugin 'klen/python-mode'
 Plugin 'davidhalter/jedi-vim'
-Plugin 'Efficient-python-folding'
+" Plugin 'Efficient-python-folding'
 Plugin 'scrooloose/syntastic'
 Plugin 'hynek/vim-python-pep8-indent.git'
 Plugin 'kien/ctrlp.vim'
-Plugin 'scrooloose/nerdtree'
+" Plugin 'scrooloose/nerdtrpangloss/vim-javascriptee'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'fholgado/minibufexpl.vim'
 Plugin 'vim-scripts/TaskList.vim'
 Plugin 'Glench/Vim-Jinja2-Syntax'
+Plugin 'jelera/vim-javascript-syntax'
+Plugin 'pangloss/vim-javascript'
+Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'Raimondi/delimitMate'
 " Plugin 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
 " Plugin 'eiginn/netrw'
 
@@ -256,4 +260,5 @@ setlocal shiftwidth=4
 setlocal shiftround
 setlocal expandtab
 
-
+" Delimate delimiters closing
+let delimitMate_expand_cr = 1
