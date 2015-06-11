@@ -6,4 +6,3 @@ pep8==1.5.7
 pip-autoremove==0.9.0
 powerline-status==2.1.4
 pyflakes==0.8.1
-vboxapi==1.0
