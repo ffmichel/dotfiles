@@ -42,7 +42,7 @@ unset config_files
 # oh-my-zsh specifics
 export ZSH=$HOME/.oh-my-zsh
 ZSH_THEME="random"
-plugins=(brew git ruby tmux mosh)
+plugins=(brew git ruby tmux mosh virtualenvwrapper)
 source $ZSH/oh-my-zsh.sh
 
 source $DOTZSH/system/aliases.zsh
