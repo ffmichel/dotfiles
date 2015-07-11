@@ -12,13 +12,11 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
-" Plugin 'klen/python-mode'
 Plugin 'davidhalter/jedi-vim'
 " Plugin 'Efficient-python-folding'
 Plugin 'scrooloose/syntastic'
 Plugin 'hynek/vim-python-pep8-indent.git'
 Plugin 'kien/ctrlp.vim'
-" Plugin 'scrooloose/nerdtrpangloss/vim-javascriptee'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'fholgado/minibufexpl.vim'
 Plugin 'vim-scripts/TaskList.vim'
@@ -27,13 +25,11 @@ Plugin 'jelera/vim-javascript-syntax'
 Plugin 'pangloss/vim-javascript'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'Raimondi/delimitMate'
-" Plugin 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
-" Plugin 'eiginn/netrw'
+Plugin 'tpope/vim-fugitive'
 
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
-" Plugin 'tpope/vim-fugitive'
 " plugin from http://vim-scripts.org/vim/scripts.html
 " Plugin 'L9'
 " Git plugin not hosted on GitHub
@@ -253,12 +249,8 @@ set wildmenu    " Popup a window showing all matching command above command
 set cursorline
 
 
-" Real programmers don't use TABs but spaces
-setlocal tabstop=4
-setlocal softtabstop=4
-setlocal shiftwidth=4
-setlocal shiftround
-setlocal expandtab
-
 " Delimate delimiters closing
 let delimitMate_expand_cr = 1
+
+" Indent guides
+map <Leader>i <esc>:IndentGuidesToggle<CR>
