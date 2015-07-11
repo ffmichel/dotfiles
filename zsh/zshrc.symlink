@@ -46,3 +46,5 @@ plugins=(brew git ruby tmux mosh virtualenvwrapper)
 source $ZSH/oh-my-zsh.sh
 
 source $DOTZSH/system/aliases.zsh
+
+eval "$(dircolors $DOTZSH/zsh/dircolor_wombat)"
