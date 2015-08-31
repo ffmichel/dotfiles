@@ -1,4 +1,4 @@
-# This repo is base on [holman dotfiles](https://github.com/holman/dotfiles)
+# This repo is based on [holman dotfiles](https://github.com/holman/dotfiles)
 
 ## install
 
