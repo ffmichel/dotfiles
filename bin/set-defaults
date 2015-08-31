@@ -1,5 +1,0 @@
-#!/bin/sh
-#
-# Sets OS X defaults by running $DOTZSH/osx/set-defaults.sh.
-
-exec $DOTZSH/osx/set-defaults.sh
