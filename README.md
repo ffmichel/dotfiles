@@ -1,5 +1,3 @@
-# holman does dotfiles
-
 ## dotfiles
 
 Your dotfiles are how you personalize your system. These are mine.
@@ -19,9 +17,10 @@ subject](http://zachholman.com/2010/08/dotfiles-are-meant-to-be-forked/).
 Run this:
 
 ```sh
-git clone https://github.com/holman/dotfiles.git ~/.dotfiles
+git clone http://scubedsy.ux.dsone.3ds.com:8006/Config/dotfiles.git ~/.dotfiles
 cd ~/.dotfiles
 script/bootstrap
+script/install
 ```
 
 This will symlink the appropriate files in `.dotfiles` to your home directory.
