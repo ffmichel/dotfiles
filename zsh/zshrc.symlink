@@ -46,6 +46,9 @@ plugins=(git tmux mosh)
 source $ZSH/oh-my-zsh.sh
 
 source $DOTZSH/system/aliases.zsh
+
+#virtualenvwrapper
+export VIRTUALENVWRAPPER_HOOK_DIR=$DOTZSH/venv
 source /usr/local/bin/virtualenvwrapper.sh
 
 eval "$(dircolors $DOTZSH/zsh/dircolor_wombat)"
