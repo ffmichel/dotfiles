@@ -1,4 +1,6 @@
-## dotfiles
+# dotfiles
+
+## What ?
 
 Your dotfiles are how you personalize your system. These are mine.
 
@@ -21,6 +23,20 @@ git clone http://scubedsy.ux.dsone.3ds.com:8006/Config/dotfiles.git ~/.dotfiles
 cd ~/.dotfiles
 script/bootstrap
 script/install
+```
+
+Then ask your sysadmin to run:
+
+```sh
+sudo apt-get install libncurses5-dev zsh tmux
+sudo -E pip install -r <userhome>/.dotfiles/venv/requirement.txt
+```
+
+then run
+
+```sh
+chsh -s $(which zsh)
+vim +PluginInstall +qall
 ```
 
 This will symlink the appropriate files in `.dotfiles` to your home directory.
