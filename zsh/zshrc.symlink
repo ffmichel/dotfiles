@@ -55,6 +55,11 @@ source $DOTZSH/system/aliases.zsh
 
 #virtualenvwrapper
 export VIRTUALENVWRAPPER_HOOK_DIR=$DOTZSH/venv
-source /usr/local/bin/virtualenvwrapper.sh
+if [ -z "${VIRTUAL_ENV}" ]; then
+	source $(which virtualenvwrapper.sh)
+fi
 
 eval "$(dircolors $DOTZSH/zsh/dircolor_wombat)"
+if ( ! mountpoint -q /home/f7l/data ); then
+	sshfs -o uid=1000 -o gid=1000 scubedsy:/data /home/f7l/data
+fi
