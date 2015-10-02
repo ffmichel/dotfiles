@@ -14,13 +14,14 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 Plugin 'davidhalter/jedi-vim'
 " Plugin 'Efficient-python-folding'
+" Plugin 'minibufexplorerpp'
 Plugin 'scrooloose/syntastic'
 Plugin 'hynek/vim-python-pep8-indent.git'
 Plugin 'kien/ctrlp.vim'
 Plugin 'flazz/vim-colorschemes'
 " Plugin 'scrooloose/nerdtrpangloss/vim-javascriptee'
 Plugin 'scrooloose/nerdcommenter'
-Plugin 'fholgado/minibufexpl.vim'
+" Plugin 'fholgado/minibufexpl.vim'
 Plugin 'vim-scripts/TaskList.vim'
 Plugin 'Glench/Vim-Jinja2-Syntax'
 Plugin 'jelera/vim-javascript-syntax'
@@ -176,6 +177,7 @@ set noswapfile
 " cd ~/.vim/bundle
 " git clone https://github.com/kien/ctrlp.vim.git
 let g:ctrlp_max_height = 30
+map <C-B> :CtrlPBuffer<CR>
 set wildignore+=*.pyc
 set wildignore+=*_build/*
 set wildignore+=*/coverage/*
