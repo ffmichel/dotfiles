@@ -14,13 +14,14 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 Plugin 'davidhalter/jedi-vim'
 " Plugin 'Efficient-python-folding'
+" Plugin 'minibufexplorerpp'
 Plugin 'scrooloose/syntastic'
 Plugin 'hynek/vim-python-pep8-indent.git'
 Plugin 'kien/ctrlp.vim'
 Plugin 'flazz/vim-colorschemes'
 " Plugin 'scrooloose/nerdtrpangloss/vim-javascriptee'
 Plugin 'scrooloose/nerdcommenter'
-Plugin 'fholgado/minibufexpl.vim'
+" Plugin 'fholgado/minibufexpl.vim'
 Plugin 'vim-scripts/TaskList.vim'
 Plugin 'Glench/Vim-Jinja2-Syntax'
 Plugin 'jelera/vim-javascript-syntax'
@@ -68,7 +69,8 @@ filetype plugin on
 set pastetoggle=<F2>
 set clipboard=unnamed
 
-
+" fugitive:
+set diffopt+=vertical 
 " Mouse and backspace
 set mouse=a  " on OSX press ALT and click
 set bs=2     " make backspace behave like normal again
@@ -131,7 +133,9 @@ au InsertLeave * match ExtraWhitespace /\s\+$/
 " mkdir -p ~/.vim/colors && cd ~/.vim/colors
 " wget -O wombat256mod.vim http://www.vim.org/scripts/download_script.php?src_id=13400
 set t_Co=256
-colorscheme wombat256mod
+" colorscheme wombat256mod
+set background=dark
+colorscheme solarized
 
 
 " Enable syntax highlighting
@@ -176,6 +180,7 @@ set noswapfile
 " cd ~/.vim/bundle
 " git clone https://github.com/kien/ctrlp.vim.git
 let g:ctrlp_max_height = 30
+map <C-B> :CtrlPBuffer<CR>
 set wildignore+=*.pyc
 set wildignore+=*_build/*
 set wildignore+=*/coverage/*
