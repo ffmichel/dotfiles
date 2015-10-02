@@ -63,3 +63,8 @@ eval "$(dircolors $DOTZSH/zsh/dircolor_wombat)"
 if ( ! mountpoint -q /home/f7l/data ); then
 	sshfs -o uid=1000 -o gid=1000 scubedsy:/data /home/f7l/data
 fi
+
+#launch tmux at startup
+if command -v tmux>/dev/null; then
+	  [[ ! $TERM =~ screen ]] && [ -z $TMUX ] && exec tmux
+fi
