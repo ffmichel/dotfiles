@@ -1,5 +1,9 @@
 # This repo is based on [holman dotfiles](https://github.com/holman/dotfiles)
 
+## Preview
+
+![Preview](https://github.com/ffmichel/bullet-train-oh-my-zsh-theme/raw/master/img/preview.gif)
+
 ## install
 
 Run this:
@@ -14,7 +18,7 @@ script/install
 Then ask your sysadmin to run:
 
 ```sh
-sudo apt-get install libncurses5-dev zsh tmux
+sudo apt-get install libncurses5-dev zsh tmux python-dev
 sudo -E pip install -r <userhome>/.dotfiles/venv/requirement.txt
 ```
 
