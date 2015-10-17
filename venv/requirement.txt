@@ -5,3 +5,5 @@ mccabe
 pep8
 powerline-status
 pyflakes
+virtualenv
+virtualenvwrapper
