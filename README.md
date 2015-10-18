@@ -15,7 +15,7 @@ script/bootstrap
 script/install
 ```
 
-Then ask your sysadmin to run:
+Then run:
 
 ```sh
 pip install -r <userhome>/.dotfiles/venv/requirement.txt
