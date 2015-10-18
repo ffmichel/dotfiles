@@ -9,7 +9,7 @@
 Run this:
 
 ```sh
-git clone -b linux https://github.com/ffmichel/dotfiles.git ~/.dotfiles
+git clone -b mac https://github.com/ffmichel/dotfiles.git ~/.dotfiles
 cd ~/.dotfiles
 script/bootstrap
 script/install
@@ -18,8 +18,7 @@ script/install
 Then ask your sysadmin to run:
 
 ```sh
-sudo apt-get install libncurses5-dev zsh tmux python-dev
-sudo -E pip install -r <userhome>/.dotfiles/venv/requirement.txt
+pip install -r <userhome>/.dotfiles/venv/requirement.txt
 ```
 
 then run
