@@ -29,6 +29,7 @@ Plugin 'pangloss/vim-javascript'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'Raimondi/delimitMate'
 Plugin 'tpope/vim-fugitive'
+Plugin 'Valloric/YouCompleteMe'
 
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
@@ -70,7 +71,7 @@ set pastetoggle=<F2>
 set clipboard=unnamed
 
 " fugitive:
-set diffopt+=vertical 
+set diffopt+=vertical
 " Mouse and backspace
 set mouse=a  " on OSX press ALT and click
 set bs=2     " make backspace behave like normal again
@@ -147,10 +148,8 @@ syntax on
 
 " Showing line numbers and length
 set number  " show line numbers
-set tw=79   " width of document (used by gd)
 set nowrap  " don't automatically wrap on load
 set fo-=t   " don't automatically wrap text when typing
-set colorcolumn=80
 highlight ColorColumn ctermbg=233
 
 
@@ -238,6 +237,8 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_python_checkers = ['flake8']
+let g:syntastic_cpp_cpplint_exec = '/usr/local/bin/cpplint'
+let g:syntastic_cpp_checkers = ['cpplint']
 
 " Powerline
 python from powerline.vim import setup as powerline_setup
@@ -262,3 +263,10 @@ let delimitMate_expand_cr = 1
 
 " Indent guides
 map <Leader>i <esc>:IndentGuidesToggle<CR>
+
+" YouCompleteMe
+let g:ycm_global_ycm_extra_conf = '~/src/autonomy/build/.ycm_extra_conf.py'
+nnoremap <leader>jd :YcmCompleter GoTo<CR>
+let g:ycm_show_diagnostics_ui = 0
+let g:ycm_confirm_extra_conf = 0
+filetype plugin indent on    " required

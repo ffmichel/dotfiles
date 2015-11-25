@@ -45,7 +45,7 @@ ZSH_THEME="bullet-train/bullet-train"
 BULLETTRAIN_CONTEXT_SHOW=true
 BULLETTRAIN_CONTEXT_BG=white
 BULLETTRAIN_CONTEXT_FG=black
-BULLETTRAIN_CONTEXT_DEFAULT_USER="f7l"
+BULLETTRAIN_CONTEXT_DEFAULT_USER="fabrice"
 BULLETTRAIN_VIRTUALENV_PREFIX='⚡'
 BULLETTRAIN_GIT_AHEAD="  %F{red}➜%F{black}"
 plugins=(git tmux mosh)
@@ -60,11 +60,10 @@ if [ -z "${VIRTUAL_ENV}" ]; then
 fi
 
 eval "$(dircolors $DOTZSH/zsh/dircolor_wombat)"
-# if ( ! mountpoint -q /home/f7l/data ); then
-	# sshfs -o uid=1000 -o gid=1000 scubedsy:/data /home/f7l/data
-# fi
 
 #launch tmux at startup
 if command -v tmux>/dev/null; then
 	  [[ ! $TERM =~ screen ]] && [ -z $TMUX ] && exec tmux
 fi
+
+export ROS_WORKSPACE=$HOME/src/autonomy/build
