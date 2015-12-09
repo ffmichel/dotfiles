@@ -30,6 +30,7 @@ Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'Raimondi/delimitMate'
 Plugin 'tpope/vim-fugitive'
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'rdnetto/YCM-Generator'
 
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
@@ -189,6 +190,7 @@ set wildignore+=*/coverage/*
 let g:jedi#usages_command = "<leader>z"
 let g:jedi#popup_on_dot = 0
 let g:jedi#popup_select_first = 0
+let g:jedi#completions_command = "<C-h>"
 
 " Better navigating through omnicomplete option list
 " See http://stackoverflow.com/questions/2170023/how-to-map-keys-for-popup-menu-in-vim
@@ -269,4 +271,17 @@ let g:ycm_global_ycm_extra_conf = '~/src/autonomy/build/.ycm_extra_conf.py'
 nnoremap <leader>jd :YcmCompleter GoTo<CR>
 let g:ycm_show_diagnostics_ui = 0
 let g:ycm_confirm_extra_conf = 0
+let g:ycm_filetype_blacklist = {
+      \ 'tagbar' : 1,
+      \ 'qf' : 1,
+      \ 'notes' : 1,
+      \ 'markdown' : 1,
+      \ 'unite' : 1,
+      \ 'text' : 1,
+      \ 'vimwiki' : 1,
+      \ 'pandoc' : 1,
+      \ 'infolog' : 1,
+      \ 'python' : 1,
+      \ 'mail' : 1
+      \}
 filetype plugin indent on    " required
