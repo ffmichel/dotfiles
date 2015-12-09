@@ -45,10 +45,9 @@ ZSH_THEME="bullet-train/bullet-train"
 BULLETTRAIN_CONTEXT_SHOW=true
 BULLETTRAIN_CONTEXT_BG=white
 BULLETTRAIN_CONTEXT_FG=black
-BULLETTRAIN_CONTEXT_DEFAULT_USER="fabrice"
-BULLETTRAIN_VIRTUALENV_PREFIX='⚡'
+# BULLETTRAIN_VIRTUALENV_PREFIX='⚡'
 BULLETTRAIN_GIT_AHEAD="  %F{red}➜%F{black}"
-plugins=(git tmux mosh)
+plugins=(git tmux mosh vi-mode)
 source $ZSH/oh-my-zsh.sh
 
 source $DOTZSH/system/aliases.zsh
@@ -62,8 +61,22 @@ fi
 eval "$(dircolors $DOTZSH/zsh/dircolor_wombat)"
 
 #launch tmux at startup
-if command -v tmux>/dev/null; then
-	  [[ ! $TERM =~ screen ]] && [ -z $TMUX ] && exec tmux
-fi
+# if command -v tmux>/dev/null; then
+	  # [[ ! $TERM =~ screen ]] && [ -z $TMUX ] && exec tmux
+# fi
 
-export ROS_WORKSPACE=$HOME/src/autonomy/build
+
+
+
+vim_ins_mode="%{$fg[white]%}%{$fg_bold[blue]$bg[white]%} INSERT %{$reset_color%}"
+vim_cmd_mode="%{$fg[green]%}%{$fg_bold[black]$bg[green]%} COMMAND %{$reset_color%}"
+vim_mode=$vim_ins_mode
+function zle-line-init zle-keymap-select {
+    RPS1="${${KEYMAP/vicmd/${vim_cmd_mode}}/(main|viins)/${vim_ins_mode}}"
+    RPS2=$RPS1
+    zle reset-prompt
+}
+zle -N zle-line-init
+zle -N zle-keymap-select
+
+setopt transientrprompt
