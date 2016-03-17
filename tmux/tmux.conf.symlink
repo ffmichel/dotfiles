@@ -31,3 +31,10 @@ bind r source-file ~/.tmux.conf \; display "Reloaded!"
 # symbols to split the screen
 bind | split-window -h
 bind - split-window -v
+
+# mouse behaves like a normal person.
+set -g mode-mouse on
+set -g mouse-resize-pane on
+set -g mouse-select-pane on
+set -g mouse-select-window on
+
