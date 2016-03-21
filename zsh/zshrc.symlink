@@ -47,7 +47,7 @@ BULLETTRAIN_CONTEXT_BG=white
 BULLETTRAIN_CONTEXT_FG=black
 # BULLETTRAIN_VIRTUALENV_PREFIX='⚡'
 BULLETTRAIN_GIT_AHEAD="  %F{red}➜%F{black}"
-plugins=(git tmux)
+plugins=(git tmux mosh)
 source $ZSH/oh-my-zsh.sh
 
 source $DOTZSH/system/aliases.zsh
