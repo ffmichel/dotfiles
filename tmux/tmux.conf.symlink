@@ -6,12 +6,12 @@ set -g utf8
 set-window-option -g utf8 on
 
 # Tmux should be pretty, we need 256 color for that
-set -g default-terminal "screen-256color"
+set -g default-terminal "xterm-256color"
 
 
 # Tmux uses a 'control key', let's set it to 'Ctrl-a'
 # Reason: 'Ctrl-a' is easier to reach than 'Ctrl-b'
-set -g prefix C-a
+set -g prefix C-q
 unbind C-b
 
 # command delay? We don't want that, make it short
@@ -25,11 +25,14 @@ setw -g pane-base-index 1
 
 # Allow us to reload our Tmux configuration while
 # using Tmux
+unbind r
 bind r source-file ~/.tmux.conf \; display "Reloaded!"
 
 # Getting interesting now, we use the vertical and horizontal
 # symbols to split the screen
+unbind |
 bind | split-window -h
+unbind -
 bind - split-window -v
 
 # mouse behaves like a normal person.
@@ -38,3 +41,69 @@ set -g mouse-resize-pane on
 set -g mouse-select-pane on
 set -g mouse-select-window on
 
+# unbind m
+# bind m \
+	# set -g mode-mouse on \;\
+	# set -g mouse-resize-pane on \;\
+	# set -g mouse-select-pane on \;\
+	# set -g mouse-select-window on \;\
+	# display 'Mouse: ON'
+
+# unbind M
+# bind M \
+	# set -g mode-mouse off \;\
+	# set -g mouse-resize-pane off \;\
+	# set -g mouse-select-pane off \;\
+	# set -g mouse-select-window off \;\
+	# display 'Mouse: OFF'
+
+# unbind +
+# bind + \
+	# new-window -d -n tmux-zoom 'clear && echo TMUX ZOOM && read' \;\
+	# swap-pane -s tmux-zoom \;\
+	# select-window -t tmux-zoom
+
+# unbind _
+# bind _ \
+	# last-window \;\
+	# swap-pane -s tmux-zoom \;\
+	# kill-window -t tmux-zoom
+
+# Color scheme (Solarized Dark)
+
+# default statusbar colors
+set-option -g status-bg brightgreen
+set-option -g status-fg white
+set-option -g status-attr default
+
+# default window title colors
+set-window-option -g window-status-fg brightcyan
+set-window-option -g window-status-bg default
+#set-window-option -g window-status-attr dim
+
+# active window title colors
+set-window-option -g window-status-current-fg white
+set-window-option -g window-status-current-bg blue
+#set-window-option -g window-status-current-attr bright
+
+# pane border
+set-option -g pane-border-fg brightgreen
+set-option -g pane-active-border-fg red
+
+# message text
+set-option -g message-bg black
+set-option -g message-fg red
+
+# pane number display
+set-option -g display-panes-active-colour red
+set-option -g display-panes-colour white
+
+# clock
+set-window-option -g clock-mode-colour cyan
+
+# Smart pane switching with awareness of vim splits
+# See: https://github.com/christoomey/vim-tmux-navigator
+bind -n C-h run "(tmux display-message -p '#{pane_current_command}' | grep -iq vim && tmux send-keys C-h) || tmux select-pane -L"
+bind -n C-j run "(tmux display-message -p '#{pane_current_command}' | grep -iq vim && tmux send-keys C-j) || tmux select-pane -D"
+bind -n C-k run "(tmux display-message -p '#{pane_current_command}' | grep -iq vim && tmux send-keys C-k) || tmux select-pane -U"
+bind -n C-l run "(tmux display-message -p '#{pane_current_command}' | grep -iq vim && tmux send-keys C-l) || tmux select-pane -R"
