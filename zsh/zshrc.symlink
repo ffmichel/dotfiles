@@ -1,3 +1,6 @@
+# tmuxinator titles:
+DISABLE_AUTO_TITLE=true
+
 # shortcut to this dotfiles path is $DOTZSH
 export DOTZSH=$HOME/.dotfiles
 
@@ -47,7 +50,7 @@ BULLETTRAIN_CONTEXT_BG=white
 BULLETTRAIN_CONTEXT_FG=black
 # BULLETTRAIN_VIRTUALENV_PREFIX='⚡'
 BULLETTRAIN_GIT_AHEAD="  %F{red}➜%F{black}"
-plugins=(git tmux)
+plugins=(git tmux tmuxinator repo common-aliases pip chucknorris)
 source $ZSH/oh-my-zsh.sh
 
 source $DOTZSH/system/aliases.zsh
@@ -64,3 +67,4 @@ eval "$(dircolors $DOTZSH/zsh/dircolor_wombat)"
 export CTEST_OUTPUT_ON_FAILURE=1
 # Color on GTest
 export GTEST_COLOR=1
+

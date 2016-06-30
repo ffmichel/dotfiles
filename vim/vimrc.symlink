@@ -35,6 +35,9 @@ Plugin 'tpope/vim-abolish'
 " Plugin 'Valloric/YouCompleteMe'
 " Plugin 'rdnetto/YCM-Generator'
 Plugin 'Rip-Rip/clang_complete'
+Plugin 'christoomey/vim-tmux-navigator'
+
+let g:clang_auto_user_options='path, .clang_complete, compile_commands.json'
 let g:clang_library_path='/usr/lib/llvm-3.5/lib/libclang.so.1'
 let g:clang_use_library = 1
 Plugin 'SirVer/ultisnips'
@@ -54,9 +57,8 @@ let g:clang_format#detect_style_file = 1
 
 Plugin 'Chiel92/vim-autoformat'
 noremap <F4> :Autoformat<CR>
-let g:formatdef_yapf = "/usr/local/bin/yapf -i"
-let g:autoformat_verbosemode=1
 let g:formatters_python = ['yapf']
+let g:formatter_yapf_style = 'google'
 
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
@@ -118,12 +120,6 @@ vnoremap <C-n> :nohl<CR>
 inoremap <C-n> :nohl<CR>
 
 
-" bind Ctrl+<movement> keys to move around the windows, instead of using Ctrl+w + <movement>
-" Every unnecessary keystroke that can be saved is good for your health :)
-map <c-j> <c-w>j
-map <c-k> <c-w>k
-map <c-l> <c-w>l
-map <c-h> <c-w>h
 
 
 " map sort function to a key
@@ -136,7 +132,7 @@ vnoremap <Leader>s :sort<CR>
 vnoremap < <gv  " better indentation
 vnoremap > >gv  " better indentation
 
-
+set term=xterm-256color
 " Show whitespace
 " MUST be inserted BEFORE the colorscheme command
 autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
@@ -327,3 +323,13 @@ nmap <silent> <leader>s :set spell!<CR>
 
 " Set Region to US English:
 set spelllang=en_us
+
+" tmux-vim
+let g:tmux_navigator_save_on_switch = 1
+
+" bind Ctrl+<movement> keys to move around the windows, instead of using Ctrl+w + <movement>
+" Every unnecessary keystroke that can be saved is good for your health :)
+map <c-j> <c-w>j
+map <c-k> <c-w>k
+map <c-l> <c-w>l
+map <c-h> <c-w>h
