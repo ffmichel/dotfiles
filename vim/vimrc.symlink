@@ -4,6 +4,11 @@ autocmd! BufWritePost ~/.vimrc nested :source ~/.vimrc
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
+" Rebind <Leader> key
+" I like to have it here becuase it is easier to reach than the default and
+" it is next to ``m`` and ``n`` which I use for navigating between tabs.
+let mapleader = ","
+
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -14,12 +19,11 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 Plugin 'davidhalter/jedi-vim'
 " Plugin 'Efficient-python-folding'
-Plugin 'ffmichel/Efficient-python-folding'
-let g:SimpylFold_docstring_preview = 1
+" Plugin 'ffmichel/Efficient-python-folding'
+" let g:SimpylFold_docstring_preview = 1
 " Plugin 'minibufexplorerpp'
 Plugin 'scrooloose/syntastic'
 Plugin 'hynek/vim-python-pep8-indent.git'
-Plugin 'kien/ctrlp.vim'
 Plugin 'flazz/vim-colorschemes'
 " Plugin 'scrooloose/nerdtrpangloss/vim-javascriptee'
 Plugin 'scrooloose/nerdcommenter'
@@ -32,20 +36,29 @@ Plugin 'nathanaelkane/vim-indent-guides'
 " Plugin 'Raimondi/delimitMate'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-abolish'
-" Plugin 'Valloric/YouCompleteMe'
-" Plugin 'rdnetto/YCM-Generator'
-Plugin 'Rip-Rip/clang_complete'
+
+" === YOU COMPLETE COMPLETE ===
+Plugin 'Valloric/YouCompleteMe'
+source ~/Documents/vim_snippets/ycm/ycm.vim
+let g:ycm_show_diagnostics_ui = 1
+
+" === CTRL-P =================
+Plugin 'kien/ctrlp.vim'
+source ~/Documents/vim_snippets/ctrlp/ctrlp.vim
+" map <C-B> :CtrlPBuffer<CR>
+" let g:ctrlp_show_hidden = 1
+" let g:ctrlp_max_depth=40
+" set wildignore+=*.pyc
+" set wildignore+=*_build/*
+" set wildignore+=*/coverage/*
+" set wildignore+=*/tmp/*,*.o,*.so,*.swp,*.zip,*.html
+
 Plugin 'christoomey/vim-tmux-navigator'
 
-let g:clang_auto_user_options='path, .clang_complete, compile_commands.json'
-let g:clang_library_path='/usr/lib/llvm-3.5/lib/libclang.so.1'
-let g:clang_use_library = 1
 Plugin 'SirVer/ultisnips'
-
-let g:clang_snippets = 1
-let g:clang_snippets_engine = 'ultisnips'
-set completeopt=menu,longest
-Plugin 'ervandew/supertab'
+let g:UltiSnipsExpandTrigger="<c-s>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 " vinegar for making netrw better
 Plugin 'tpope/vim-vinegar'
@@ -58,7 +71,12 @@ let g:clang_format#detect_style_file = 1
 Plugin 'Chiel92/vim-autoformat'
 noremap <F4> :Autoformat<CR>
 let g:formatters_python = ['yapf']
-let g:formatter_yapf_style = 'google'
+let g:formatdef_yapf = "'yapf -l '.a:firstline.'-'.a:lastline"
+
+" prevent vim autoformat to use default formating
+let g:autoformat_autoindent = 0
+let g:autoformat_retab = 0
+let g:autoformat_remove_trailing_spaces = 0
 
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
@@ -104,12 +122,8 @@ set diffopt+=vertical
 " Mouse and backspace
 set mouse=a  " on OSX press ALT and click
 set bs=2     " make backspace behave like normal again
+set ttymouse=sgr
 
-
-" Rebind <Leader> key
-" I like to have it here becuase it is easier to reach than the default and
-" it is next to ``m`` and ``n`` which I use for navigating between tabs.
-let mapleader = ","
 
 
 " Bind nohl
@@ -183,20 +197,6 @@ set nobackup
 set nowritebackup
 set noswapfile
 
-" Settings for ctrlp
-" cd ~/.vim/bundle
-" git clone https://github.com/kien/ctrlp.vim.git
-let g:ctrlp_max_height = 30
-map <C-B> :CtrlPBuffer<CR>
-let g:ctrlp_show_hidden = 1
-" let g:ctrlp_max_files=0
-let g:ctrlp_max_depth=40
-set wildignore+=*.pyc
-set wildignore+=*_build/*
-set wildignore+=*/coverage/*
-set wildignore+=*/tmp/*,*.o,*.so,*.swp,*.zip,*.html
-" set wildignore+=*.a,*.o.d,*.o.cmake,*.o.depend
-
 " Settings for jedi-vim
 let g:jedi#usages_command = "<leader>z"
 let g:jedi#popup_on_dot = 0
@@ -247,7 +247,6 @@ if filereadable("~/.vimrc_local")
 	source ~/.vimrc_local
 else
 	let g:syntastic_cpp_cpplint_exec = '/usr/local/bin/cpplint'
-	let g:ycm_global_ycm_extra_conf = '.ycm_extra_conf.py'
 endif
 
 let g:syntastic_always_populate_loc_list = 1
@@ -256,6 +255,7 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_python_checkers = ['flake8']
 let g:syntastic_cpp_checkers = ['cpplint']
+let g:syntastic_python_flake8_args='--max-line-length=100'
 
 function! ToggleErrors()
     let old_last_winnr = winnr('$')
@@ -293,22 +293,6 @@ set cursorline
 map <Leader>i <esc>:IndentGuidesToggle<CR>
 
 " YouCompleteMe
-nnoremap <leader>jd :YcmCompleter GoTo<CR>
-let g:ycm_show_diagnostics_ui = 0
-let g:ycm_confirm_extra_conf = 0
-let g:ycm_filetype_blacklist = {
-      \ 'tagbar' : 1,
-      \ 'qf' : 1,
-      \ 'notes' : 1,
-      \ 'markdown' : 1,
-      \ 'unite' : 1,
-      \ 'text' : 1,
-      \ 'vimwiki' : 1,
-      \ 'pandoc' : 1,
-      \ 'infolog' : 1,
-      \ 'python' : 1,
-      \ 'mail' : 1
-      \}
 filetype plugin indent on    " required
 
 " kill buffer without deleting split <leader>d
@@ -327,9 +311,7 @@ set spelllang=en_us
 " tmux-vim
 let g:tmux_navigator_save_on_switch = 1
 
-" bind Ctrl+<movement> keys to move around the windows, instead of using Ctrl+w + <movement>
-" Every unnecessary keystroke that can be saved is good for your health :)
-map <c-j> <c-w>j
-map <c-k> <c-w>k
-map <c-l> <c-w>l
-map <c-h> <c-w>h
+" scons as python
+autocmd BufNew,BufRead SConstruct setf python
+autocmd BufNew,BufRead *.scons setf python
+

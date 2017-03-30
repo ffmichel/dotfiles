@@ -56,10 +56,7 @@ source $ZSH/oh-my-zsh.sh
 source $DOTZSH/system/aliases.zsh
 
 #virtualenvwrapper
-export VIRTUALENVWRAPPER_HOOK_DIR=$DOTZSH/venv
-if [ -z "${VIRTUAL_ENV}" ]; then
-	source $(which virtualenvwrapper.sh)
-fi
+source $HOME/Documents/venv_snippets/venv.sh
 
 eval "$(dircolors $DOTZSH/zsh/dircolor_wombat)"
 
@@ -68,3 +65,4 @@ export CTEST_OUTPUT_ON_FAILURE=1
 # Color on GTest
 export GTEST_COLOR=1
 
+stty -ixon

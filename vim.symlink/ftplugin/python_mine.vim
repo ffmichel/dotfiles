@@ -5,8 +5,8 @@ setlocal shiftwidth=4
 setlocal shiftround
 setlocal expandtab
 
-set tw=79   " width of document (used by gd)
-set colorcolumn=80
+set tw=99   " width of document (used by gd)
+set colorcolumn=100
 
 " Efficient Python Folding
 setlocal nofoldenable

@@ -1,2 +1,2 @@
 #!/bin/sh
-pip install -r $DOTZSH/venv/requirement.txt
+# pip install -r $DOTZSH/venv/requirement.txt
