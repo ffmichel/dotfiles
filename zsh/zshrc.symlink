@@ -56,7 +56,7 @@ source $ZSH/oh-my-zsh.sh
 source $DOTZSH/system/aliases.zsh
 
 #virtualenvwrapper
-source $HOME/Documents/venv_snippets/venv.sh
+source $HOME/Documents/venv_snippets/venv.zsh
 
 eval "$(dircolors $DOTZSH/zsh/dircolor_wombat)"
 
