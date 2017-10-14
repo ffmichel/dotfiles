@@ -64,5 +64,8 @@ eval "$(dircolors $DOTZSH/zsh/dircolor_wombat)"
 export CTEST_OUTPUT_ON_FAILURE=1
 # Color on GTest
 export GTEST_COLOR=1
+#ccache
+export PATH="/usr/lib/ccache:${PATH}"
+export CCACHE_CPP2=true
 
 stty -ixon
