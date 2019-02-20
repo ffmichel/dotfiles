@@ -13,14 +13,22 @@ setlocal nofoldenable
 
 map <Leader>b Oimport ipdb; ipdb.set_trace() # BREAKPOINT<C-c>
 
-python << EOF
-import os
-import sys
-import vim
-for p in sys.path:
-    # Add each directory in sys.path, if it exists.
-    if os.path.isdir(p):
-        # Command 'set' needs backslash before each space.
-        vim.command(r"set path+=%s" % (p.replace(" ", r"\ ")))
-EOF
+" python << EOF
+" import os
+" import sys
+" import vim
+" for p in sys.path:
+    " # Add each directory in sys.path, if it exists.
+    " if os.path.isdir(p):
+	" # add egg-links
+	" content = os.listdir(p)
+	" egg_links = [os.path.join(p, fname) for fname in content if fname.endswith('.egg-link')]
+	" for egg in egg_links:
+            " with open(egg, 'r') as fh:
+		" egg_path = fh.readline().strip()
+	    " vim.command(r"set path+=%s" % (egg_path.replace(" ", r"\ ")))
+	    " sys.path.append(egg_path)
+	" # Command 'set' needs backslash before each space.
+	" vim.command(r"set path+=%s" % (p.replace(" ", r"\ ")))
+" EOF
 

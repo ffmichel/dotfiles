@@ -16,7 +16,7 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'scrooloose/syntastic'
-Plugin 'hynek/vim-python-pep8-indent.git'
+" Plugin 'hynek/vim-python-pep8-indent.git'
 Plugin 'flazz/vim-colorschemes'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'vim-scripts/TaskList.vim'
@@ -31,9 +31,9 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-abolish'
 
 " === YOU COMPLETE COMPLETE ===
-Plugin 'Valloric/YouCompleteMe'
-source ~/Documents/vim_snippets/ycm/ycm.vim
-let g:ycm_show_diagnostics_ui = 1
+" Plugin 'Valloric/YouCompleteMe'
+" source ~/Documents/vim_snippets/ycm/ycm.vim
+" let g:ycm_show_diagnostics_ui = 1
 
 " === CTRL-P =================
 Plugin 'kien/ctrlp.vim'
@@ -288,3 +288,6 @@ set wildmenu    " Popup a window showing all matching command above command
 
 " Work with mako files:
 au BufNewFile,BufRead *.mako set filetype=mako
+
+" Set filetype of files without extension to python
+autocmd BufNewFile,BufRead * if expand('%:t') !~ '\.' | setfiletype=python | endif
